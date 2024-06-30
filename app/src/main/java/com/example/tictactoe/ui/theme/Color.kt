@@ -11,7 +11,7 @@ val PurpleGrey40 = Color(0xFF625b71)
 val Pink40 = Color(0xFF7D5260)
 
 
-val Aqua = Color(0xFF04D4F8)
-val GreenishYellow = Color(0xFFA8C920)
+val Aqua = Color(0xFF1F1A64)
+val GreenishYellow = Color(0xFF3DB334)
 val GrayBackground = Color(0xFFf5f7f6)
-val BlueCustom = Color(0xFF3871df)
+val BlueCustom = Color(0xFFE0701F)

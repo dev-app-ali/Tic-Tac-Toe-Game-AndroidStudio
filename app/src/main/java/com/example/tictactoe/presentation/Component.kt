@@ -13,6 +13,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.graphics.drawscope.Stroke
 import com.example.tictactoe.ui.theme.Aqua
+import com.example.tictactoe.ui.theme.BlueCustom
 import com.example.tictactoe.ui.theme.GreenishYellow
 
 @Composable
@@ -24,7 +25,7 @@ fun BoardBase() {
             .padding(10.dp)
     ) {
         drawLine(
-            color = Color.Gray,
+            color = BlueCustom,
             strokeWidth = 5f,
             cap = StrokeCap.Round,
             start = Offset(x = size.width * 1 / 3, y = 0f),
@@ -32,7 +33,7 @@ fun BoardBase() {
         )
 
         drawLine(
-            color = Color.Gray,
+            color = BlueCustom,
             strokeWidth = 5f,
             cap = StrokeCap.Round,
             start = Offset(x = size.width * 2 / 3, y = 0f),
@@ -40,14 +41,14 @@ fun BoardBase() {
         )
 
         drawLine(
-            color = Color.Gray,
+            color = BlueCustom,
             strokeWidth = 5f,
             cap = StrokeCap.Round,
             start = Offset(x = 0f, y = size.width * 1 / 3),
             end = Offset(x = size.height, y = size.width * 1 / 3)
         )
         drawLine(
-            color = Color.Gray,
+            color = BlueCustom,
             strokeWidth = 5f,
             cap = StrokeCap.Round,
             start = Offset(x = 0f, y = size.width * 2 / 3),

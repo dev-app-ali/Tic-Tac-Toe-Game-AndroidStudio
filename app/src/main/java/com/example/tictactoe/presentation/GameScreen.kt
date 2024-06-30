@@ -12,6 +12,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.aspectRatio
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -53,26 +54,21 @@ fun GameScreen(viewModel: GameViewModel) {
         modifier = Modifier
             .fillMaxSize()
             .background(GrayBackground)
-            .padding(horizontal = 30.dp),
+            .padding(horizontal = 20.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.SpaceEvenly
     ) {
-        Row(
-            modifier = Modifier.fillMaxWidth(),
-            horizontalArrangement = Arrangement.SpaceBetween,
-            verticalAlignment = Alignment.CenterVertically
-        ) {
-
-            Text(text = "Player 'O': ${state.playerCircleCount}", fontSize = 16.sp)
-            Text(text = "Draw: ${state.drawCount}", fontSize = 16.sp)
-            Text(text = "Player 'X': ${state.playerCrossCount}", fontSize = 16.sp)
-        }
         Text(
             text = "Tic Tac Toe",
-            fontSize = 50.sp,
+            fontSize = 60.sp,
             fontWeight = FontWeight.Bold,
             fontFamily = FontFamily.Cursive,
             color = BlueCustom
+        )
+        Text(
+            text = state.hintText,
+            fontSize = 27.sp,
+            fontStyle = FontStyle.Italic,
         )
         Box(
             modifier = Modifier
@@ -135,11 +131,12 @@ fun GameScreen(viewModel: GameViewModel) {
                 verticalArrangement = Arrangement.SpaceEvenly
             ) {
 
-                AnimatedVisibility(visible = state.hasWon,
+                AnimatedVisibility(
+                    visible = state.hasWon,
                     enter = fadeIn(tween(1500))
                 ) {
                     DrawVictoryLine(state = state)
-                    
+
 
                 }
             }
@@ -147,41 +144,54 @@ fun GameScreen(viewModel: GameViewModel) {
         }
 
         Row(
-            modifier = Modifier.fillMaxWidth(),
-            verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.SpaceBetween
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 20.dp),
+            horizontalArrangement = Arrangement.SpaceBetween,
+            verticalAlignment = Alignment.CenterVertically
         ) {
+
             Text(
-                text = state.hintText,
-                fontSize = 24.sp,
-                fontStyle = FontStyle.Italic,
+                text = "Player 'O': ${state.playerCircleCount}",
+                fontSize = 16.sp,
+                fontWeight = FontWeight.W600
             )
-            Button(
-                onClick = {
-                    viewModel.onAction(
-                        UserActions.PlayAgainButtonClicked
-                    )
-                },
-                shape = RoundedCornerShape(5.dp),
-                elevation = ButtonDefaults.buttonElevation(5.dp),
-                colors = ButtonDefaults.buttonColors(
-                    containerColor = BlueCustom,
-                    contentColor = Color.White
-                )
-            ) {
+            Text(text = "Draw: ${state.drawCount}", fontSize = 16.sp, fontWeight = FontWeight.W600)
+            Text(
+                text = "Player 'X': ${state.playerCrossCount}",
+                fontSize = 16.sp,
+                fontWeight = FontWeight.W600
+            )
+        }
 
-                Text(
-                    text = "Play Again",
-                    fontSize = 16.sp,
-                )
 
-            }
+        Button(
+            onClick = {
+                viewModel.onAction(
+                    UserActions.PlayAgainButtonClicked
+                )
+            },
+            shape = RoundedCornerShape(5.dp),
+            elevation = ButtonDefaults.buttonElevation(5.dp),
+            colors = ButtonDefaults.buttonColors(
+                containerColor = BlueCustom,
+                contentColor = Color.White
+            )
+        ) {
+
+            Text(
+                text = "Play Again",
+                fontSize = 16.sp,
+            )
 
         }
 
+
     }
 
+
 }
+
 
 @Composable
 fun DrawVictoryLine(state: GameState) {
