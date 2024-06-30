@@ -42,7 +42,7 @@ To run this app on your Android device, follow these steps:
 
 1. Clone the repository:
    ```sh
-   git clone https://github.com/yourusername/tic-tac-toe-app.git
+   git clone https://github.com/dev-app-ali/Tic-Tac-Toe-Game-AndroidStudio
 
 2.Open the project in Android Studio.
 
